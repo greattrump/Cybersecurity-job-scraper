@@ -81,3 +81,19 @@ Tech Corp, 2 days ago, 12345, http://example.com/job/12345, Manhattan, New York,
 ## Notes
 - Ensure you have an active and valid RapidAPI key.
 - Modify the `querystring` dictionary to search for different job types or locations.
+
+## Ethical Considerations
+
+This script is designed to be used responsibly and ethically. Here are some key points to consider:
+
+- Respect for Indeed and Users: We respect Indeed's terms of service and will not overload their servers with excessive requests.
+- This script only scrapes publicly available job listings and does not collect any personal user data.
+
+## Responsible Data Usage:
+- The data scraped from Indeed should only be used for legitimate purposes such as personal job searching or data analysis.
+
+## Avoiding Misuse: 
+- This script is not intended for any malicious purposes such as spamming applicants.
+Additional Notes
+
+- users should obtain their own RapidAPI key to avoid relying on the placeholder key in the script.
