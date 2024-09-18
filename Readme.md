@@ -36,7 +36,7 @@ The API request headers contain:
 
 ```
 headers = {
-    "x-rapidapi-key": "f016c95904mshcb5f883e445ac1ep1b864ejsn4a7ffae93426",
+    "x-rapidapi-key": "Your_Api_Key",
     "x-rapidapi-host": "indeed12.p.rapidapi.com"
 }
 ```
