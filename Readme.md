@@ -34,7 +34,8 @@ The API request headers contain:
 - **x-rapidapi-key**: Your RapidAPI key for authentication (a sample key is shown in the script but should be replaced with your own key).
 - **x-rapidapi-host**: The host for the API.
 
-```headers = {
+```
+headers = {
     "x-rapidapi-key": "f016c95904mshcb5f883e445ac1ep1b864ejsn4a7ffae93426",
     "x-rapidapi-host": "indeed12.p.rapidapi.com"
 }
