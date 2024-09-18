@@ -47,8 +47,10 @@ headers = {
 ### Step 1: API Request
 The script sends an HTTP GET request to the Indeed Job Search API using the `requests.get()` function, passing the query parameters and headers.
 
-```    response = requests.get(url, headers=headers, params=querystring)
-    response.raise_for_status()  # Raises an HTTPError for bad responses```
+```
+    response = requests.get(url, headers=headers, params=querystring)
+    response.raise_for_status()  # Raises an HTTPError for bad responses
+```
 
 ### Step 2: Response Handling
 - If the response status code is 200 (successful):
@@ -56,7 +58,8 @@ The script sends an HTTP GET request to the Indeed Job Search API using the `req
   - If the response contains job data (`hits` key in the JSON), the script proceeds to write the data to a CSV file.
 - If the response contains no data or the `hits` key is missing, an error message is printed.
 
-``` # Check if the response contains data
+```
+# Check if the response contains data
     if response.status_code == 200:
         data = response.json()
 
@@ -66,7 +69,8 @@ The script sends an HTTP GET request to the Indeed Job Search API using the `req
         # Check if 'hits' key exists and has data
         if 'hits' in data and len(data['hits']) > 0:
             # Specify the CSV file name
-            csv_file = 'cyberjobs_data.csv'```
+            csv_file = 'cyberjobs_data.csv'
+```
 
 ### Step 3: Writing to CSV
 - The script creates a CSV file named `cyberjobs_data.csv`.
@@ -80,7 +84,8 @@ The script sends an HTTP GET request to the Indeed Job Search API using the `req
   - `pub_date_ts_milli`: The job posting timestamp in milliseconds.
   - `salary`: A combination of minimum and maximum salary, along with the salary type (e.g., "hourly", "annual").
 
-``` # Open CSV file for writing
+```
+# Open CSV file for writing
             with open(csv_file, mode='w', newline='', encoding='utf-8') as file:
                 writer = csv.writer(file)
                 # Write the header row
@@ -100,13 +105,15 @@ The script sends an HTTP GET request to the Indeed Job Search API using the `req
                         f"{salary_info.get('min', '')}-{salary_info.get('max', '')} {salary_info.get('type', '')}"
                     ])
 
-            print(f"Data successfully written to {csv_file}")```
+            print(f"Data successfully written to {csv_file}")
+```
 
 
 ### Step 4: Error Handling
 - If the API request fails, a `requests.RequestException` is raised, and an error message is printed.
 
-```  else:
+```
+else:
             print("Error: No job listings found for the given criteria.")
     else:
         print(f"Error: API request failed with status code {response.status_code}")
