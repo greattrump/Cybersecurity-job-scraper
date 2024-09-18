@@ -25,15 +25,29 @@ The script connects to the Indeed Job Search API hosted on RapidAPI with the fol
   - `location`: Location of jobs (set to "newyork").
   - `page_id`: Page number for pagination (set to 1).
 
+``` url = "https://indeed12.p.rapidapi.com/jobs/search"
+querystring = {"query": "entrylevelcybersecurity", "location": "newyork", "page_id": "1"}
+```
+
 ## Headers
 The API request headers contain:
 - **x-rapidapi-key**: Your RapidAPI key for authentication (a sample key is shown in the script but should be replaced with your own key).
 - **x-rapidapi-host**: The host for the API.
 
+```headers = {
+    "x-rapidapi-key": "f016c95904mshcb5f883e445ac1ep1b864ejsn4a7ffae93426",
+    "x-rapidapi-host": "indeed12.p.rapidapi.com"
+}
+```
+
+
 ## Main Functionality
 
 ### Step 1: API Request
 The script sends an HTTP GET request to the Indeed Job Search API using the `requests.get()` function, passing the query parameters and headers.
+
+```    response = requests.get(url, headers=headers, params=querystring)
+    response.raise_for_status()  # Raises an HTTPError for bad responses```
 
 ### Step 2: Response Handling
 - If the response status code is 200 (successful):
