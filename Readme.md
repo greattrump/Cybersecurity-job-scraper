@@ -25,7 +25,7 @@ The script connects to the Indeed Job Search API hosted on RapidAPI with the fol
   - `location`: Location of jobs (set to "newyork").
   - `page_id`: Page number for pagination (set to 1).
 
-``` url = "https://indeed12.p.rapidapi.com/jobs/search"
+```url = "https://indeed12.p.rapidapi.com/jobs/search"
 querystring = {"query": "entrylevelcybersecurity", "location": "newyork", "page_id": "1"}
 ```
 
