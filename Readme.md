@@ -55,6 +55,18 @@ The script sends an HTTP GET request to the Indeed Job Search API using the `req
   - If the response contains job data (`hits` key in the JSON), the script proceeds to write the data to a CSV file.
 - If the response contains no data or the `hits` key is missing, an error message is printed.
 
+``` # Check if the response contains data
+    if response.status_code == 200:
+        data = response.json()
+
+        # Debug: Print the raw data response
+        print("Raw API response:", json.dumps(data, indent=4))
+
+        # Check if 'hits' key exists and has data
+        if 'hits' in data and len(data['hits']) > 0:
+            # Specify the CSV file name
+            csv_file = 'cyberjobs_data.csv'```
+
 ### Step 3: Writing to CSV
 - The script creates a CSV file named `cyberjobs_data.csv`.
 - It writes the following fields for each job listing into the file:
@@ -67,8 +79,40 @@ The script sends an HTTP GET request to the Indeed Job Search API using the `req
   - `pub_date_ts_milli`: The job posting timestamp in milliseconds.
   - `salary`: A combination of minimum and maximum salary, along with the salary type (e.g., "hourly", "annual").
 
+``` # Open CSV file for writing
+            with open(csv_file, mode='w', newline='', encoding='utf-8') as file:
+                writer = csv.writer(file)
+                # Write the header row
+                writer.writerow(["company_name", "formatted_relative_time", "id", "link", "locality", "location", "pub_date_ts_milli", "salary"])
+
+                # Write data rows
+                for job in data.get('hits', []):  # Use .get() to avoid KeyError
+                    salary_info = job.get('salary', {})
+                    writer.writerow([
+                        job.get('company_name', ''),
+                        job.get('formatted_relative_time', ''),
+                        job.get('id', ''),
+                        job.get('link', ''),
+                        job.get('locality', ''),
+                        job.get('location', ''),
+                        job.get('pub_date_ts_milli', ''),
+                        f"{salary_info.get('min', '')}-{salary_info.get('max', '')} {salary_info.get('type', '')}"
+                    ])
+
+            print(f"Data successfully written to {csv_file}")```
+
+
 ### Step 4: Error Handling
 - If the API request fails, a `requests.RequestException` is raised, and an error message is printed.
+
+```  else:
+            print("Error: No job listings found for the given criteria.")
+    else:
+        print(f"Error: API request failed with status code {response.status_code}")
+
+except requests.RequestException as e:
+    print(f"Error: Unable to fetch data ({e})")
+```
 
 ## Usage Instructions
 1. Replace the placeholder RapidAPI key (`x-rapidapi-key`) in the script with your own valid key.
