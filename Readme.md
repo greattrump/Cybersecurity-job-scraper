@@ -1,6 +1,5 @@
 ![1398313](1398313.jpg)
 # Cybersecurity_Jobscraper
-by Khaj Thompson & Elaine John
 
 ## Overview
 This Python script fetches job listings for entry-level cybersecurity positions in New York using the Indeed Job Search API and saves the data in a CSV file. It uses the `requests` library to make an HTTP GET request to the API and writes the job data into a CSV file using the `csv` library.
@@ -163,3 +162,7 @@ This script is designed to be used responsibly and ethically. Here are some key 
 Additional Notes
 
 - users should obtain their own RapidAPI key to avoid relying on the placeholder key in the script.
+
+- ## Credits
+- Khaj Thompson
+- Elaine John
