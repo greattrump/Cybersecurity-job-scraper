@@ -166,3 +166,72 @@ Additional Notes
 - ## Credits
 - Khaj Thompson
 - Elaine John
+
+## FAQ - Cybersecurity Jobscraper
+
+### 1. What is the purpose of this script?
+This Python script scrapes job listings for entry-level cybersecurity positions in New York using the Indeed Job Search API. It collects data such as company name, location, job ID, and salary, and saves the results in a CSV file for further analysis or job searching.
+
+### 2. How does the script connect to the Indeed API?
+The script connects to the Indeed Job Search API using the `requests` library. It sends an HTTP GET request with specified query parameters (job type and location) to retrieve relevant job listings.
+
+### 3. What do I need to run the script?
+To run the script, you'll need:
+- Python 3.x installed on your machine.
+- The `requests` library (`pip install requests`).
+- A valid RapidAPI key to access the Indeed API.
+
+### 4. How do I get a RapidAPI key?
+You can obtain a RapidAPI key by signing up at [RapidAPI](https://rapidapi.com). Once you have the key, replace the placeholder key in the script with your own key to authenticate the API requests.
+
+### 5. How does the script handle errors or empty responses?
+If the API request fails (e.g., due to an invalid API key or server issues), the script raises an exception and prints an error message. If no job listings are found for the query, it will display:  
+*Error: No job listings found for the given criteria.*
+
+### 6. How can I customize the job search criteria?
+To modify the search:
+- Change the `query` parameter in the `querystring` dictionary to search for different job roles.
+- Adjust the `location` parameter to search in other cities or regions.
+
+Example:
+```python
+querystring = {"query": "cybersecurity", "location": "california", "page_id": "1"}
+```
+
+### 7. Where is the data saved, and what format is used?
+The job data is saved in a CSV file named `cyberjobs_data.csv`. Each row in the CSV contains fields such as company name, job ID, location, and salary.
+
+### 8. What kind of data does the script extract from job listings?
+For each job listing, the script extracts:
+- Company name
+- Relative posting time
+- Job ID
+- Job link
+- Locality and location (e.g., Manhattan, New York)
+- Salary information (minimum, maximum, and type)
+  
+### 9. Can I use this script for locations outside New York?
+Yes, you can search for jobs in different locations by changing the `location` parameter in the querystring. For example, to search for jobs in California, set `"location": "california"`.
+
+### 10. What should I do if the script encounters issues?
+Check for the following:
+- Ensure your RapidAPI key is valid and has sufficient quota.
+- Verify that you have an active internet connection.
+- Double-check that the query parameters are correctly set.
+
+### 11. Is there a limit on how many jobs I can scrape?
+This depends on the API limitations set by RapidAPI and Indeed. Make sure to review their usage quotas, and adjust your script accordingly to avoid excessive requests.
+
+### 12. How can I update the API query for pagination?
+If you want to scrape more than one page of results, you can modify the `page_id` parameter in the querystring to fetch subsequent pages.
+
+Example:
+```python
+querystring = {"query": "entrylevelcybersecurity", "location": "newyork", "page_id": "2"}
+```
+
+### 13. What ethical considerations should I keep in mind when using this script?
+The script is intended for responsible usage:
+- It abides by Indeed’s terms of service and avoids overloading their servers.
+- It only scrapes publicly available job data and does not collect personal user information.
+- The data should be used for legitimate purposes like job searching or data analysis, not for spamming or other malicious activities.
