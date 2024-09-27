@@ -15,7 +15,7 @@ import csv
 url = "https://indeed12.p.rapidapi.com/jobs/search"
 querystring = {"query": "entrylevelcybersecurity", "location": "newyork", "page_id": "4"}
 headers = {
-    "x-rapidapi-key": "1fdf025a4bmsh107d6b0c0478a9dp1b8c70jsn51972dd162bd",
+    "x-rapidapi-key": "Your_Api_Key",
     "x-rapidapi-host": "indeed12.p.rapidapi.com"
 }
 
